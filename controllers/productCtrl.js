@@ -224,7 +224,7 @@ productQuery = productQuery.skip(startIndex).limit(limit) ; // it let ignore the
 
     // await the query
 
-    let products = await productQuery; // it just return the product object that we need
+    let products = await productQuery.populate("reviews"); // it just return the product object that we need
 
   res.json({
     status : "Success",
@@ -242,7 +242,7 @@ productQuery = productQuery.skip(startIndex).limit(limit) ; // it let ignore the
 //@access Public
 
 export const getProductCtrl = asyncHandler( async ( req , res)=>{
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id).populate("reviews");
   if(!product){
     throw new Error ("Product not found");
   }

@@ -48,7 +48,7 @@ reviews : [ // providing the reviews about the products || and we gonno create t
 //this is what we call refrrences using id to keep reviews in the reviews array
     {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'Reviews',
+        ref : 'Review',
     },  
 ],
 
@@ -75,7 +75,27 @@ totalSold : {
         toJSON : {virtuals : true },
     },
 );
+//virtuals
+// get total rating
+ProductSchema.virtual("totalReviews").get(function() {
+    const product = this;
+    return product.reviews.length;
+});
 
+// avarage rating
+ProductSchema.virtual("averageRating").get(function() {
+    let ratingTotal = 0 ;
+    const product = this;
+    product.reviews.forEach((review) => {
+        ratingTotal += review.rating
+    });
+    //calculate average rating
+   const averageRating = ratingTotal / product.reviews.length;
+   return averageRating; 
+  
+
+
+});
 
 
 

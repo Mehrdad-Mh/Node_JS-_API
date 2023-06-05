@@ -7,6 +7,9 @@ import { globslErrHandler , notFound } from '../middlewares/globalErrHandler.js'
 import productsRouter from '../routes/productsRoutes.js';
 import categoriesRouter from '../routes/categoriesRoutes.js';
 import brandsRouter from '../routes/brandsRoutes.js';
+import colorsRouter from '../routes/colorsRoutes.js';
+import reviewRouter from '../routes/reviewRoutes.js';
+
 
 //db Connect
 dbConnect();
@@ -28,6 +31,8 @@ app.use('/api/v1/users/' , userRoutes);
 app.use('/api/v1/products/' , productsRouter);
 app.use('/api/v1/categories/' , categoriesRouter)
 app.use('/api/v1/brands/' , brandsRouter)
+app.use('/api/v1/colors/' , colorsRouter);
+app.use('/api/v1/reviews/' , reviewRouter)
 //err handler
 app.use(notFound)
 app.use(globslErrHandler)
