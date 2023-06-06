@@ -50,7 +50,7 @@ hasShippingAddress : {
 
 shippingAddress : {
    
-    firsyName : {
+    firstName : {
         type : String,
     },
     lastName : {
